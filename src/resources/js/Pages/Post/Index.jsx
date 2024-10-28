@@ -16,6 +16,7 @@ const Index = (props) => {
             }
         >
             <div className="p-12">
+                <Link href="/posts/create">Create</Link>
                 <h1>Blog Name</h1>
 
                 {posts.map((post) => (
