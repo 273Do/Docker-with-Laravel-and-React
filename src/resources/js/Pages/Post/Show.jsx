@@ -1,6 +1,7 @@
 import React from "react";
-import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Link } from "@inertiajs/react";
+
+import Authenticated from "@/Layouts/AuthenticatedLayout";
 
 const Show = (props) => {
     const { post } = props;
@@ -10,7 +11,7 @@ const Show = (props) => {
             user={props.auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Index
+                    Show
                 </h2>
             }
         >
@@ -23,7 +24,11 @@ const Show = (props) => {
                 </div>
 
                 <div>
-                    <Link href={`/posts/${post.id}/edit`}>編集</Link>
+                    <p>{post.category.name}</p>
+                </div>
+
+                <div>
+                    [<Link href={`/posts/${post.id}/edit`}>edit</Link>]
                 </div>
 
                 <div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Link, router } from "@inertiajs/react";
 
@@ -31,6 +31,7 @@ const Index = (props) => {
                             <Link href={`/posts/${post.id}`}>{post.title}</Link>
                         </h2>
                         <p>{post.body}</p>
+                        <p>{post.category.name}</p>
 
                         <button
                             className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md"

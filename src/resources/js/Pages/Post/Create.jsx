@@ -1,20 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useForm } from "@inertiajs/react";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 
 const Create = (props) => {
+    const { categories } = props;
     const { data, setData, post } = useForm({
         title: "",
         body: "",
+        category_id: categories[0].id,
     });
 
-    // 送信用関数を追加
     const handleSendPosts = (e) => {
         e.preventDefault();
         post("/posts");
     };
-
-    console.log(data);
 
     return (
         <Authenticated
@@ -50,6 +49,21 @@ const Create = (props) => {
                         </span>
                     </div>
 
+                    <div>
+                        <h2>Category</h2>
+                        <select
+                            onChange={(e) =>
+                                setData("category_id", e.target.value)
+                            }
+                        >
+                            {categories.map((category) => (
+                                <option value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
                     <button
                         type="submit"
                         className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md"
@@ -58,7 +72,7 @@ const Create = (props) => {
                     </button>
                 </form>
 
-                <Link href="/posts">戻る</Link>
+                <Link href="/">戻る</Link>
             </div>
         </Authenticated>
     );
